@@ -1,0 +1,240 @@
+.filter {
+    margin-top: 40px;
+    padding: 0 15px;
+    &__container {
+        padding: 40px;
+        margin: 0 auto;
+        width: 1200px;
+        max-width: 100%;
+        min-height: 284px;
+        background: #EFF0F4;
+        border-radius: 24px;
+        position: relative;
+    }
+    &__search {
+        position: relative;
+        label {
+            font-size: 16px;
+            color: #8A8A89;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 516px;
+            max-width: 100%;
+            min-height: 56px;
+            left: 0px;
+            top: 0px;
+            border: none;
+            background-color: #FFFFFF;
+            border-radius: 18px;
+            padding: 16px 60px;
+            background: url('/search.svg') no-repeat 20px;
+            background-color: #FFFFFF;
+        }
+    }
+    &__btn {
+        position: absolute;
+        top: 66%;
+        transform: translateY(-50%);
+        right: 0px;
+        button {
+            padding: 16px 18px;
+            gap: 14px;
+            width: 158px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: #3470FF;
+            border-radius: 18px;
+            font-size: 16px;
+            color: #FFFFFF;
+        }
+    }
+    .label {
+        display: block;
+        margin-bottom: 8px;
+    }
+    .default-select {
+        -webkit-appearance: none;
+        border: none;
+        max-width: 100%;
+        min-height: 56px;
+        border-radius: 18px;
+        font-size: 20px;
+        color: #2B2B2A;
+        background: url('/chevron.svg') no-repeat  center right 18px;
+        background-size: 24px;
+        background-color: #FFFFFF;
+        padding: 16px 18px;
+    }
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 28px;
+        justify-content: space-between;
+        .region {
+            max-width: 100%;
+            select {
+                width: 242px;
+                max-width: 100%;
+            }
+        }
+        .model {
+            max-width: 100%;
+            select {
+                width: 245px;
+                max-width: 100%;
+            }
+        }
+        .year {
+            max-width: 100%;
+            select {
+                width: 140px;
+                max-width: 100%;
+            }
+        }
+        .budget {
+            input {
+                width: 180px;
+            }
+            &-inputs {
+                display: flex;
+                gap: 1px;
+                position: relative;
+                &::after {
+                    content: "";
+                    width: 44px;
+                    height: 56px;
+                    border-radius: 0 18px 18px 0;
+                    background-color: #3470FF;
+                    position: absolute;
+                    right: 0px;
+                    cursor: pointer;
+                }
+                input {
+                    &:nth-child(1) {  
+                        background: transparent;
+                        -webkit-appearance: none;
+                        background-color: #ffffff;
+                        border-radius: 18px 0 0 18px;
+                    }
+                    &:nth-child(2) {
+                        border-radius: 0 18px 18px 0;
+                        background-color: #FFFFFF;
+                    }
+                }
+                svg {
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-50%);
+                    z-index: 2;
+                    cursor: pointer;
+                }
+            }
+          
+        }
+    }
+}
+
+.filter-found {
+    display: block;
+    width: 1200px;
+    max-width: 100%;
+    height: 56px;
+    margin: 72px auto 50px;
+
+    &__inner {
+        width: 323px;
+        max-width: 100%;
+        padding: 16px 32px;
+        background: #EFF0F4;
+        border-radius: 18px;
+        text-align: center;
+        font-size: 20px;
+        color: #2B2B2A;
+        a {
+            color: blue;
+        }
+    }
+}
+
+@media (max-width: 1120px) {
+    .filter {
+        &__items {
+            gap: 20px;
+            justify-content: flex-start;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .filter {
+        &__btn {
+            position: static;
+            transform: translate(0);
+            margin-top: 20px;
+        }
+    }
+}
+
+@media (max-width: 465px) {
+    .filter {
+        .budget {
+            &-inputs {
+                input {
+                    &:nth-child(1) {
+                        width: 119px;
+                    }
+                    &:nth-child(2) {
+                        width: 166px;
+                    }
+                }
+            }
+        }
+    }
+    .filter-found {
+        margin: 20px auto;
+        &__inner {
+            margin: 0 auto;
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    .filter {
+        &__container {
+            padding: 29px;
+        }
+        .budget {
+            &-inputs {
+                flex-direction: column;
+                gap: 8px;
+                &::after {
+                    content: none;
+                }
+                input {
+                    &:nth-child(1) {
+                       border-radius: 10px;
+                    }
+                    &:nth-child(2) {
+                        border-radius: 10px;
+                        background: transparent;
+                        -webkit-appearance: none;
+                        background-color: #FFFFFF;
+                    }
+                }
+            }
+            svg {
+                display: none;
+            }
+        }
+        .default-select {
+            padding: 16px 9px;
+            font-size: 17px;
+        }
+    }
+}
