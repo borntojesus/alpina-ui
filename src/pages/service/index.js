@@ -29,7 +29,7 @@ export default ServiceList;
 
 
 export async function getStaticProps(context) {
-    const res = await fetch(`http://localhost:1337/api/services/`)
+    const res = await fetch(`${process.env.API_URL}/services/`)
     const data = await res.json()
     console.log(context);
     return {

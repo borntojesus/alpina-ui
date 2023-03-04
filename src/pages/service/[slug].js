@@ -9,7 +9,7 @@ const Service = (props) => {
 
 export async function getStaticProps(context) {
   const res = await fetch(
-    `http://localhost:1337/api/services?filters[slug][$eq]=${context.params.slug}`
+    `${process.env.API_URL}/services?filters[slug][$eq]=${context.params.slug}`
   );
   const response = await res.json();
 
@@ -19,7 +19,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`http://localhost:1337/api/services/`);
+  const res = await fetch(`${process.env.API_URL}/services/`);
   const data = await res.json();
 
   return {

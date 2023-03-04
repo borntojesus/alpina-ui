@@ -1,33 +1,35 @@
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import BlogList from "@/components/Blog/BlogList";
 
-import BlogCard from "@/components/Blog/BlogCard";
-
-
-
-const BlogList = (props) => {
+const BlogPage = (props) => {
 	const router = useRouter()
-	const ListBlog = props.data.data;
-	console.log(props.data);
-	console.log(ListBlog);
+	const serviceData = props.data.data;
 
-	return (
-		<>
-			<BlogCard />
-			{ListBlog.map(({ id, attributes }) => (
-				<Link href={'/blog/' + id} key={id}>
-					<BlogCard name={attributes.Name} />
-				</Link>
-			))}
-		</>
-	)
+	return <div>
+
+		{serviceData.map(({ id, attributes }) => (
+			<Link key={id} href={'/blog/' + attributes.slug}>
+				<BlogList image={attributes.image.data[0].attributes.url} 
+									title={attributes.title} 
+									description={attributes.description} 
+									authorName={attributes.authors.data[0].attributes.authorName}
+									authorDate={attributes.authors.data[0].attributes.authorDate}
+									tags={attributes.tags.data}
+				/>
+			</Link>
+		))}
+
+	</div>
+
 }
-export default BlogList;
+export default BlogPage;
+
 
 export async function getStaticProps(context) {
-	const res = await fetch(`http://localhost:1337/api/blogs/`)
+	const res = await fetch(`${process.env.API_URL}/blogs?populate=*`)
 	const data = await res.json()
-
+	console.log(context);
 	return {
 		props: { data }, // will be passed to the page component as props
 	}
